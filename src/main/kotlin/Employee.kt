@@ -24,11 +24,13 @@ class Employee(var name: String,
         }
         // check if hoursIn is more than 40, if yes double all calculations for OT
         else if (hoursIn > 40){
+            var oT = (hoursIn - 40) * 1.5
+            var normaltime = 40
             // increases pay by 0, 5 or 10 percent based on shift
             when (shift){
-                1 -> weeklyPay = payRate * hoursIn * 2
-                2 -> weeklyPay = payRate * hoursIn * 1.05 * 2
-                3 -> weeklyPay = payRate * hoursIn * 1.1 * 2
+                1 -> weeklyPay = payRate * normaltime
+                2 -> weeklyPay = payRate * (normaltime + oT) * 1.05
+                3 -> weeklyPay = payRate * (normaltime + oT) * 1.1
             }
         }
         // non salary under 40 hours pay calculation
